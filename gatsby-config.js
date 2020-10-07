@@ -1,43 +1,37 @@
+const path = require(`path`);
+
 module.exports = {
   siteMetadata: {
-    title: `Novela by Narative`,
-    name: `Narative`,
-    siteUrl: `https://novela.narative.co`,
-    description: `This is my description that will be used in the meta tags and important for search results`,
+    title: `Josh Holt - Product Manager`,
+    name: `Josh Holt`,
+    siteUrl: `https://joshholt.dev/`,
+    description: `Personal website for Josh Holt, a product manager in Minneapolis, MN.`,
     hero: {
-      heading: `Welcome to Novela, the simplest way to start publishing with Gatsby.`,
+      heading: `Hi, I'm Josh, product manager.`,
       maxWidth: 652,
     },
     social: [
       {
         name: `twitter`,
-        url: `https://twitter.com/narative`,
+        url: `https://twitter.com/aldenholt`,
       },
       {
         name: `github`,
-        url: `https://github.com/narative`,
-      },
-      {
-        name: `instagram`,
-        url: `https://instagram.com/narative.co`,
+        url: `https://github.com/j-alden`,
       },
       {
         name: `linkedin`,
-        url: `https://www.linkedin.com/company/narative/`,
-      },
-      {
-        name: `dribbble`,
-        url: `https://dribbble.com/narativestudio`,
+        url: `https://www.linkedin.com/in/joshua-a-holt/`,
       },
     ],
   },
   plugins: [
     {
-      resolve: "@narative/gatsby-theme-novela",
+      resolve: '@narative/gatsby-theme-novela',
       options: {
-        contentPosts: "content/posts",
-        contentAuthors: "content/authors",
-        basePath: "/",
+        contentPosts: 'content/posts',
+        contentAuthors: 'content/authors',
+        basePath: '/',
         authorsPage: true,
         sources: {
           local: true,
@@ -52,15 +46,28 @@ module.exports = {
         short_name: `Novela`,
         start_url: `/`,
         background_color: `#fff`,
-        theme_color: `#fff`,
+        theme_color: `#CAE4D7`,
         display: `standalone`,
         icon: `src/assets/favicon.png`,
       },
     },
     {
-      resolve: `gatsby-plugin-netlify-cms`,
+      resolve: `gatsby-source-filesystem`,
       options: {
+        name: `images`,
+        path: path.join(__dirname, `src`, `images`),
       },
     },
+    {
+      resolve: 'gatsby-plugin-web-font-loader',
+      options: {
+        typekit: {
+          id: 'gwv2sec',
+        },
+      },
+    },
+    `gatsby-plugin-sharp`,
+    `gatsby-transformer-sharp`,
+    'gatsby-plugin-theme-ui',
   ],
 };
